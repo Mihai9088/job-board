@@ -2,22 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Work;
 use Illuminate\Http\Request;
 
-class WorkController extends Controller
+class AuthController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $filters = request()->only(['search', 'min_salary', 'max_salary', 'experience', 'category']);
-
-        return view(
-            'job.index',
-            ['jobs' => Work::with('employer')->filter($filters)->get()]
-        );
+        //
     }
 
     /**
@@ -25,7 +19,7 @@ class WorkController extends Controller
      */
     public function create()
     {
-        //
+       return view('auth.create');
     }
 
     /**
@@ -39,12 +33,9 @@ class WorkController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Work $job)
+    public function show(string $id)
     {
-        return view(
-            'job.show',
-            ['job' => $job->load('employer')]
-        );
+        //
     }
 
     /**
